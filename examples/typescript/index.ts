@@ -17,9 +17,11 @@ const bree = new Bree({
    * the compiled-to-js code still needs to use JS
    */
   defaultExtension: process.env.TS_NODE ? 'ts' : 'js',
-  jobs: ['job']
+  jobs: ['job', { name: 'manualJob', cron: '* */10 * * *' }]
 });
 
 (async () => {
   await bree.start();
+
+  await bree.run('manualJob', { hello: 'world' });
 })();

@@ -3,6 +3,7 @@
   "include": ["**/*.ts"],
   "compilerOptions": {
     "outDir": "dist",
-    "moduleResolution": "node"
+    "moduleResolution": "Node16",
+    "esModuleInterop": true
   }
 }

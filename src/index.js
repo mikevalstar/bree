@@ -350,8 +350,8 @@ class Bree extends EventEmitter {
     return meta;
   }
 
-  async run(name) {
-    debug('run', name);
+  async run(name, customWorkerData) {
+    debug('run', name, customWorkerData);
 
     if (!this._init) await this.init();
 
@@ -381,7 +381,8 @@ class Bree extends EventEmitter {
           ...(this.config.worker && this.config.worker.workerData
             ? this.config.worker.workerData
             : {}),
-          ...(job.worker && job.worker.workerData ? job.worker.workerData : {})
+          ...(job.worker && job.worker.workerData ? job.worker.workerData : {}),
+          ...(customWorkerData ? customWorkerData : {})
         }
       };
       this.workers.set(name, this.createWorker(job.path, object));

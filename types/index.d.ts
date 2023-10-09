@@ -22,7 +22,7 @@ declare class Bree extends EventEmitter {
     meta?: Record<string, unknown>
   ) => Record<string, unknown>;
 
-  run: AsyncFunction<[name?: string], void>;
+  run: AsyncFunction<[name?: string, customWorkerData?: any], void>;
   start: AsyncFunction<[name?: string], void>;
   stop: AsyncFunction<[name?: string], void>;
   add: AsyncFunction<
